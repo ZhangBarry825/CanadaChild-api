@@ -1,0 +1,38 @@
+---------------------------------------------------------------
+[ 2018-07-25T09:40:21+08:00 ] 192.168.33.1 GET /admin/article/lists?type=%E8%B5%B4%E5%8A%A0%E7%94%9F%E5%AD%90%E7%A6%8F%E5%88%A9&page_num=1&page_size=2
+[ info ] canada.barry.umdev.cn/admin/article/lists?type=%E8%B5%B4%E5%8A%A0%E7%94%9F%E5%AD%90%E7%A6%8F%E5%88%A9&page_num=1&page_size=2 [运行时间：0.266040s][吞吐率：3.76req/s] [内存消耗：2,178.76kb] [文件加载：44]
+[ info ] [ LANG ] /VagrantShare/CanadaChild-api/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article',
+    2 => 'lists',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'canada.barry.umdev.cn',
+  'connection' => 'keep-alive',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+  'postman-token' => '33defbec-06b8-5a04-9b12-2dc3b68bdd68',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,und;q=0.7',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'type' => '赴加生子福利',
+  'page_num' => '1',
+  'page_size' => '2',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
