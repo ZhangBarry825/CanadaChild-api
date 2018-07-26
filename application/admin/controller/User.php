@@ -42,7 +42,7 @@ class User extends Base
                 session('user',$result);
                 return $this->SuccessReturn("success",$result);
             }else{
-                return $this->ErrorReturn($this->User->getError());
+                return $this->ErrorReturn('账号或密码错误！');
             }
         } else {
             return $this->ErrorReturn($this->UserValidate->getError());
