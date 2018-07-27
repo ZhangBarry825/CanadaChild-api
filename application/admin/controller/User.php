@@ -48,6 +48,33 @@ class User extends Base
             return $this->ErrorReturn($this->UserValidate->getError());
         }
     }
+    public function updatepwd(){
+        if(isset($_POST['old_password'])){
+            $rec = $_POST;
+        }else{
+            $request_data = file_get_contents ('php://input');
+            $rec = json_decode ($request_data,true);
+        }
+        $res = $this->UserValidate->check($rec, '', 'updatePwd');
+
+        if($res){
+            $rec['old_password']=md5($rec['old_password']);
+            $result=$this->User->where('username','=','admin')->where('password','=',$rec['old_password'])->field('name,roles')->find();
+            if($result){
+                $data['password']=md5($rec['new_password']);
+                $result2=$this->User->where('username','=','admin')->update($data);
+                if($result2){
+                    return $this->SuccessReturn('success');
+                }else{
+                    return $this->ErrorReturn('新旧密码不能一致！');
+                }
+            }else{
+                return $this->ErrorReturn('原密码错误！');
+            }
+        }else{
+            return $this->ErrorReturn($this->UserValidate->getError());
+        }
+    }
 
     public function logout(){
         unsetUser();
