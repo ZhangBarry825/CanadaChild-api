@@ -52,7 +52,10 @@
             font-size: 17px;
             line-height: 1.5;
         }
-
+        .text-content img{
+            width: 100%;
+            height: auto;
+        }
         .ewm-box {
             width: 100%;
             padding: 20px;
@@ -80,7 +83,7 @@
     <div class="text-content"></div>
     <div class="ewm-box">
         <img src="./../images/ewm.jpg">
-        <h3>点击并长按识别二维码关注</h3>
+        <h3>长按识别二维码关注</h3>
         <h3>加拿大温哥华生子小程序</h3>
     </div>
 </div>
@@ -103,7 +106,7 @@
             $(".time").text(timestampToTime(res.data.update_time/1000))
             $(".text-content").html(res.data.content)
             $(".backImg").css("background-image","url(https://canada-api.umsoft.cn"+res.data.cover+")");
-            document.title = res.data.type;
+            document.title = res.data.title;
         }
     });
 
