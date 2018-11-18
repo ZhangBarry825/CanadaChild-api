@@ -85,6 +85,7 @@ class Article extends Base
 
     public function detail()
     {
+        header("Access-Control-Allow-Origin: *");
         $rec = $_GET;
         $res = $this->ArticleValidate->check($rec, '', 'detail');
 

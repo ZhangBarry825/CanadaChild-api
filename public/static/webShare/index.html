@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            margin: 0 auto;
+        }
+
+        .backImg {
+            width: 100%;
+            height: 180px;
+            /*background-color: rgba(124,124,124,0.08);*/
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .title {
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 25px;
+            font-weight: normal;
+        }
+
+        .time {
+            color: gray;
+            padding: 0 10px;
+            box-sizing: border-box;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .text-content {
+            width: 100%;
+            box-sizing: border-box;
+            /*background-color: rgba(124,124,124,0.08);*/
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        .ewm-box {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .ewm-box img {
+            width: 140px;
+            height: 140px;
+        }
+
+        .ewm-box h3 {
+            font-size: 14px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="backImg"></div>
+    <h5 class="title"></h5>
+    <h6 class="time"></h6>
+
+    <div class="text-content"></div>
+    <div class="ewm-box">
+        <img src="./../images/ewm.jpg">
+        <h3>点击并长按识别二维码关注</h3>
+        <h3>加拿大温哥华生子小程序</h3>
+    </div>
+</div>
+</body>
+<script>
+    var article_id=getUrlParam("id");
+    // console.log(article_id)
+    $.ajax({
+        url: 'https://canada-api.umsoft.cn/home/article/detail',
+        method: 'GET',
+        data: {
+            id: article_id
+        },
+        header: {
+            'content-type': 'application/form-data;' // 默认值
+        },
+        success: function (res) {
+            // console.log(res.data);
+            $(".title").text(res.data.title)
+            $(".time").text(timestampToTime(res.data.update_time/1000))
+            $(".text-content").html(res.data.content)
+            $(".backImg").css("background-image","url(https://canada-api.umsoft.cn"+res.data.cover+")");
+            document.title = res.data.type;
+        }
+    });
+
+
+
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var D = date.getDate() + ' ';
+        return Y + M + D ;
+    }
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+</script>
+</html>
